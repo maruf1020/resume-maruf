@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md Maruf Billah — Resume</title>
+<meta name="description" content="Md Maruf Billah — Lead Software Engineer. Full-stack TypeScript (React, Next.js, Node.js, NestJS), AWS and Azure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --paper: #ffffff;
+    --ink: #1c1d21;
+    --muted: #5d616b;
+    --faint: #8b8f98;
+    --line: #e4e2dc;
+    --accent: #1f5f8b;
+    --accent-soft: #e8f0f6;
+    --side: #f9f8f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121418;
+      --paper: #1a1d22;
+      --ink: #e9eaec;
+      --muted: #a9adb5;
+      --faint: #7d828c;
+      --line: #2c3037;
+      --accent: #7fb7de;
+      --accent-soft: #1f2a33;
+      --side: #16191d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .toolbar {
+    max-width: 1040px; margin: 24px auto 0; padding: 0 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-size: 14px;
+  }
+  .toolbar a.back { color: var(--muted); }
+  .btn {
+    font: inherit; font-weight: 600; cursor: pointer;
+    background: var(--accent); color: var(--paper);
+    border: 0; border-radius: 8px; padding: 8px 14px;
+  }
+  .btn:hover { filter: brightness(1.08); }
+
+  .sheet {
+    max-width: 1040px; margin: 16px auto 48px;
+    background: var(--paper);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden;
+    display: grid; grid-template-columns: 300px 1fr;
+  }
+
+  header.hero {
+    grid-column: 1 / -1;
+    padding: 40px 44px 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 40px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.01em;
+  }
+  .hero .role { font-size: 17px; font-weight: 600; color: var(--accent); margin: 0 0 16px; }
+  .contact { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 14px; }
+  .contact li { white-space: nowrap; }
+
+  aside {
+    background: var(--side);
+    border-right: 1px solid var(--line);
+    padding: 32px 28px 40px;
+  }
+  main { padding: 32px 44px 44px; min-width: 0; }
+
+  h2 {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--faint); margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  section + section { margin-top: 34px; }
+
+  .skill-group + .skill-group { margin-top: 16px; }
+  .skill-group h3 { font-size: 13px; font-weight: 600; margin: 0 0 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; padding: 0; list-style: none; }
+  .tags li {
+    font-size: 12px; line-height: 1.4; padding: 3px 8px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--ink);
+  }
+
+  .kv { margin: 0; padding: 0; list-style: none; font-size: 14px; }
+  .kv li + li { margin-top: 6px; }
+  .kv b { font-weight: 600; }
+  .small { font-size: 13.5px; color: var(--muted); }
+
+  .profile { margin: 0; color: var(--ink); }
+
+  .job + .job { margin-top: 28px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .job h3 { font-size: 17px; margin: 0; }
+  .when { color: var(--faint); font-size: 13.5px; white-space: nowrap; }
+  .where { color: var(--muted); font-size: 14px; margin: 2px 0 10px; }
+
+  .engagement {
+    margin-top: 16px; padding: 14px 0 0 16px;
+    border-left: 2px solid var(--line);
+  }
+  .engagement h4 { font-size: 15px; margin: 0; }
+  .engagement .job-head { margin-bottom: 4px; }
+
+  ul.bullets { margin: 6px 0 0; padding-left: 18px; }
+  ul.bullets li { margin: 4px 0; }
+  ul.bullets li::marker { color: var(--faint); }
+
+  .stack { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  .project + .project { margin-top: 18px; }
+  .project h3 { font-size: 15.5px; margin: 0; display: inline; }
+  .project .meta { color: var(--muted); font-size: 13.5px; }
+  .project p { margin: 4px 0 0; }
+
+  blockquote {
+    margin: 6px 0 0; padding: 0 0 0 12px; border-left: 2px solid var(--accent);
+    color: var(--muted); font-style: italic;
+  }
+  .ref + .ref { margin-top: 14px; }
+
+  footer.note { text-align: center; color: var(--faint); font-size: 13px; margin: -28px 0 40px; padding: 0 16px; }
+
+  @media (max-width: 820px) {
+    .sheet { grid-template-columns: 1fr; margin: 12px 16px 40px; }
+    aside { border-right: 0; border-bottom: 1px solid var(--line); order: 2; }
+    main { order: 3; }
+    header.hero, aside, main { padding-left: 22px; padding-right: 22px; }
+    header.hero { padding-top: 28px; }
+    .hero h1 { font-size: 32px; }
+    .contact li { white-space: normal; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    :root { --bg:#fff; --paper:#fff; --ink:#111; --muted:#444; --faint:#666; --line:#ddd; --accent:#1f5f8b; --accent-soft:#eef3f7; --side:#fff; }
+    body { font-size: 11.5px; }
+    .toolbar, footer.note { display: none; }
+    .sheet { border: 0; margin: 0; max-width: none; grid-template-columns: 220px 1fr; }
+    header.hero { padding: 0 0 14px; }
+    aside { padding: 16px 16px 0 0; }
+    main { padding: 16px 0 0 20px; }
+    .job, .project, .ref, .skill-group { break-inside: avoid; }
+    a { color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span></span>
+  <button class="btn" type="button" onclick="window.print()">Download PDF</button>
+</div>
+
+<div class="sheet">
+  <header class="hero">
+    <h1>Md Maruf Billah</h1>
+    <p class="role">Lead Software Engineer · Full-Stack TypeScript (React, Next.js, Node.js, NestJS) · AWS &amp; Azure</p>
+    <ul class="contact">
+      <li>Dhaka, Bangladesh</li>
+      <li><a href="mailto:marufbillah03033@gmail.com">marufbillah03033@gmail.com</a></li>
+      <li><a href="tel:+8801675708783">+880 1675 708783</a></li>
+      <li><a href="https://github.com/maruf1020" target="_blank" rel="noopener">github.com/maruf1020</a></li>
+    </ul>
+  </header>
+
+  <aside>
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul class="tags"><li>TypeScript</li><li>JavaScript (ES6+)</li><li>SQL</li><li>HTML5</li><li>CSS3 / Sass</li><li>Java</li><li>Python</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Front end</h3>
+        <ul class="tags"><li>React</li><li>Next.js (App Router, Server Actions)</li><li>Vite</li><li>Redux Toolkit</li><li>Redux-Saga</li><li>Zustand</li><li>TanStack Query &amp; Table</li><li>React Hook Form</li><li>MUI</li><li>Tailwind CSS</li><li>shadcn/ui</li><li>Radix UI</li><li>Framer Motion</li><li>GSAP</li><li>PWA</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Back end</h3>
+        <ul class="tags"><li>Node.js</li><li>NestJS</li><li>Express</li><li>REST APIs + Swagger</li><li>WebSockets (Socket.IO)</li><li>Background jobs (pg-boss)</li><li>Middleware &amp; integration</li><li>Serverless</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Databases &amp; ORMs</h3>
+        <ul class="tags"><li>PostgreSQL</li><li>MySQL</li><li>DynamoDB</li><li>Firestore</li><li>Supabase</li><li>Neon</li><li>Prisma</li><li>TypeORM</li><li>Drizzle ORM</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud &amp; DevOps</h3>
+        <ul class="tags"><li>AWS Lambda</li><li>EC2</li><li>S3</li><li>SES</li><li>CloudWatch</li><li>Amplify</li><li>Lightsail</li><li>Azure Blob Storage</li><li>Azure Communication Services</li><li>Docker</li><li>GitHub Actions CI/CD</li><li>Serverless Framework</li><li>Vercel</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Auth &amp; security</h3>
+        <ul class="tags"><li>Microsoft Entra ID (MSAL)</li><li>OAuth 2.0</li><li>JWT</li><li>Auth.js</li><li>Better Auth</li><li>OTP login</li><li>RBAC</li><li>argon2 / bcrypt</li><li>Audit logging</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>AI</h3>
+        <ul class="tags"><li>Google Gemini API</li><li>Firebase Genkit</li><li>LLM pipelines with Zod-validated output</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Testing</h3>
+        <ul class="tags"><li>Jest</li><li>Vitest</li><li>Playwright</li><li>React Testing Library</li><li>Supertest</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Experimentation (CRO)</h3>
+        <ul class="tags"><li>VWO</li><li>AB Tasty</li><li>Optimizely</li><li>Dynamic Yield</li><li>Kameleoon</li><li>Convert</li></ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <p style="margin:0"><b>BSc in Computer Science and Engineering</b><br><span class="small">North South University, Dhaka · 2021</span></p>
+      <p class="small" style="margin:8px 0 0">Capstone: <b>Shikkha</b>, a learning management system (Laravel) with a WebRTC video-class module (Node.js, Socket.IO, PeerJS); wrote 136 of 233 commits in a team of 4.</p>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <ul class="kv">
+        <li><b>Bengali</b> — Native</li>
+        <li><b>English</b> — Full professional proficiency (C1)</li>
+      </ul>
+    </section>
+  </aside>
+
+  <main>
+    <section>
+      <h2>Profile</h2>
+      <p class="profile">Lead Software Engineer with 5+ years building production web applications in TypeScript and JavaScript for international clients in France, the UK and Europe. Spent 3 years as a front-end engineer on LVMH e-commerce experimentation, and led full-stack delivery of HR, KPI and employee management software (React, NestJS, PostgreSQL on AWS Lambda). Currently lead a team of 10 engineers, owning architecture, code review and client communication. Hands-on with AWS (Lambda, EC2, S3, SES, CloudWatch, Amplify) and Azure, CI/CD, and LLM integrations with Google Gemini.</p>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Lead Software Engineer — Echologyx Ltd</h3>
+          <span class="when">2022 – Present</span>
+        </div>
+        <p class="where">Dhaka, Bangladesh · Software services for UK and European clients</p>
+        <ul class="bullets">
+          <li>Lead a team of 10 engineers: code review and pull-request merges, technical design, estimates, mentoring and client calls.</li>
+          <li>Built ABTestLab, an open-source CLI for building and live-previewing A/B tests locally (192 commits); the company adopted it as its standard build tool (echo-transpiler).</li>
+        </ul>
+
+        <div class="engagement">
+          <div class="job-head">
+            <h4>LVMH (France) — Front-End Engineer, A/B/n Experimentation</h4>
+            <span class="when">2022 – 2025 · ~3 years</span>
+          </div>
+          <ul class="bullets">
+            <li>Built front-end A/B/n experiments for LVMH e-commerce sites on VWO, working daily with the client's optimisation team in France.</li>
+            <li>Delivered mega-menu and product-page redesigns, sticky checkout, mobile navigation, add-to-cart banners and free-shipping progress bars in JavaScript, HTML and CSS.</li>
+            <li>Wrote performance-safe DOM injection code that ran reliably across markets, devices and browsers.</li>
+          </ul>
+        </div>
+
+        <div class="engagement">
+          <div class="job-head">
+            <h4>eHRMS — Echologyx's HR system · Lead Full-Stack Engineer</h4>
+            <span class="when">2023 – Present</span>
+          </div>
+          <ul class="bullets">
+            <li>Top contributor to the React front end (242 of 1,087 commits) and third-highest contributor to the NestJS API, which runs on AWS Lambda. Also reviewed and merged the team's pull requests.</li>
+            <li>Delivered the KPI module end to end: goal templates, review periods, monthly scoring, permissions and dashboards.</li>
+            <li>Added Microsoft Entra ID single sign-on, role and permission management, leave calendar, profile change requests, managerial tree and data exports.</li>
+            <li>Built database migrations and a GitHub Actions staging pipeline with smoke tests.</li>
+          </ul>
+          <p class="stack">React · TypeScript · Redux-Saga · MUI · NestJS · TypeORM · PostgreSQL · AWS Lambda</p>
+        </div>
+
+        <div class="engagement">
+          <div class="job-head">
+            <h4>Drip Agency — Full-Stack Engineer, Drip HR</h4>
+            <span class="when">2025 – 2026</span>
+          </div>
+          <ul class="bullets">
+            <li>Built Drip HR, an HR, KPI and employee management system for Drip Agency, on both front end and back end.</li>
+            <li>Built the Drip API with secret-key authentication to exchange data with eHRMS.</li>
+          </ul>
+        </div>
+
+        <div class="engagement">
+          <div class="job-head">
+            <h4>Screwfix Connect — Full-Stack Engineer, Integration Middleware</h4>
+            <span class="when">2026</span>
+          </div>
+          <ul class="bullets">
+            <li>Built a middleware application that connects the main business application with the warehouse application.</li>
+            <li>Developed the React (Vite) front end on a large MySQL database.</li>
+            <li>Migrated application logic from Ruby to JavaScript.</li>
+          </ul>
+        </div>
+
+        <div class="engagement">
+          <h4>Internal and client products</h4>
+          <ul class="bullets">
+            <li><b>ELX Project Management Tool:</b> wrote 103 of 167 commits of an Asana-style app with realtime collaboration (Socket.IO), email OTP login, workspace RBAC, Trello import and a CRO programme module with Convert.com integration. Next.js, Prisma, PostgreSQL; deployed on AWS with Docker and GitHub Actions; Playwright tests.</li>
+            <li><b>Service Pro Plus (UK client):</b> built most of a garage directory and review platform with OTP login, argon2 hashing, admin approval workflow and Google Maps search; email and storage on AWS (SES, S3) and Azure (Blob Storage, Communication Services).</li>
+            <li><b>Tour Console:</b> company events app with tournaments and brackets, Microsoft login, attendance, polls, community feed and PWA support.</li>
+            <li>Built a Slack bot that posts daily leave and holiday updates from the HR system, and a time-log analytics dashboard (billable vs non-billable).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Software Engineer — Nexkraft Limited</h3>
+          <span class="when">2021 – 2022</span>
+        </div>
+        <p class="where">Dhaka, Bangladesh</p>
+        <ul class="bullets">
+          <li>Developed Android applications in Java, including a transport management app for BRAC.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+
+      <div class="project">
+        <h3>AI Job Finder</h3> <span class="meta">· 2026</span>
+        <p class="stack" style="margin-top:2px">Next.js · TypeScript · Prisma · PostgreSQL · pg-boss · Gemini · Gmail API · Docker · AWS Amplify</p>
+        <ul class="bullets">
+          <li>Full-stack job search and outreach platform (~26k lines of TypeScript, 26 data models, 147 tests) pulling jobs from 14 sources plus Greenhouse, Lever, Ashby, Workday and Recruitee boards.</li>
+          <li>Explainable 9-factor ranking plus LLM fit scoring; checks employers against visa-sponsor registers for Ireland, the UK and the Netherlands.</li>
+          <li>Email pipeline of draft, deterministic linter and LLM judge; Gemini key pool with quota budgeting; 8 background queues; Gmail send and reply tracking.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>ABTestLab</h3> <span class="meta">(open source) · 2025</span>
+        <p class="stack" style="margin-top:2px">Node.js · WebSocket · Rollup · Sass</p>
+        <p>CLI to scaffold, bundle and live-preview A/B tests for any platform (VWO, AB Tasty, Optimizely and others), with targeting and goal checks and an in-page status panel. Adopted company-wide.</p>
+      </div>
+
+      <div class="project">
+        <h3>ShadowFeed</h3> <span class="meta">· 2026</span>
+        <p class="stack" style="margin-top:2px">Next.js · NextAuth · Prisma · PostgreSQL</p>
+        <p>Anonymous company feed with posts, reactions and polls, admin moderation, and audit logging of 20 action types.</p>
+      </div>
+
+      <div class="project">
+        <h3>TrustPortal</h3> <span class="meta">· 2026</span>
+        <p class="stack" style="margin-top:2px">Next.js · TypeScript · Radix UI · Framer Motion · Rough.js</p>
+        <p>23-page interactive SaaS concept site where a trust-score engine moves through six levels and changes the site's behaviour; custom hand-drawn component kit, hydration-safe SSR and full keyboard and reduced-motion support.</p>
+      </div>
+
+      <div class="project">
+        <h3>Resume Builder</h3> <span class="meta">(in progress) · 2026</span>
+        <p class="stack" style="margin-top:2px">Next.js · Auth.js · Prisma · PostgreSQL · Zustand · Zod · React PDF</p>
+        <p>One set of layout components renders the resume both in the browser editor and as a PDF; versioned, validated document schema with migrations; autosave with undo/redo; Google and password login.</p>
+      </div>
+
+      <div class="project">
+        <h3>TournaTrack</h3> <span class="meta">· 2025</span>
+        <p class="stack" style="margin-top:2px">Next.js · Firebase · Genkit + Gemini</p>
+        <p>Tournament platform with knockout, group-stage and battle-royale brackets, live scores, Excel import, Microsoft sign-in and AI matchup suggestions. Grew into the company's Tour Console app.</p>
+      </div>
+
+      <div class="project">
+        <h3>Indigenous Architects</h3> <span class="meta">(freelance) · 2026</span>
+        <p class="stack" style="margin-top:2px">Next.js · Tailwind CSS · GSAP · Framer Motion</p>
+        <p>Marketing website for a Dhaka architecture firm with scroll animations and a filterable project portfolio.</p>
+      </div>
+
+      <p class="small" style="margin-top:18px"><i>More projects on <a href="https://github.com/maruf1020" target="_blank" rel="noopener">github.com/maruf1020</a>.</i></p>
+    </section>
+
+    <section>
+      <h2>References</h2>
+      <div class="ref">
+        <b>Melanie Debein</b>, Experience Optimization Director — worked together on the LVMH account.
+        <blockquote>“An exceptional developer, incredibly thorough.”</blockquote>
+      </div>
+      <div class="ref"><b>S M Azad Rahman</b>, Head of Engineering, Echologyx — direct manager.</div>
+      <p class="small" style="margin:14px 0 0">Full references available on request.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="note">Updated October 2026</footer>
+
+</body>
+</html>
